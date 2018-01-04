@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import Button from './Button';
+import Button from 'react-native-button';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +23,16 @@ const styles = StyleSheet.create({
   },
   doneText: {
     textDecorationLine: 'line-through'
+  },
+  button: {
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: '#008080',
+    marginLeft: 5,
+    marginRight: 5,
+    color: 'white'
   },
   deleteButton: {
     backgroundColor: '#800000',
@@ -44,13 +54,16 @@ const TodoItem = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.left}>
-        <Button onPress={onDone}>
+        <Button
+          style={styles.button}
+          onPress={onDone}
+        >
           {done? "Undo" : "Done"}
         </Button>
-        <Text style={[styles.text, done && styles.doneText]} >{text}</Text>
+        <Text style={[styles.text, done && styles.doneText]}>{text}</Text>
       </View>
       <Button
-        style={styles.deleteButton}
+        style={[styles.button, styles.deleteButton]}
         onPress={onDelete}
       >
         Delete
